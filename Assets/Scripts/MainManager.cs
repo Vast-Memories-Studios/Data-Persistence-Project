@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,9 @@ public class MainManager : MonoBehaviour
     public Text ScoreText;
     public GameObject GameOverText;
     
+
+
+
     private bool m_Started = false;
     private int m_Points;
     
@@ -73,4 +77,9 @@ public class MainManager : MonoBehaviour
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
+
+
 }
+
+
+
