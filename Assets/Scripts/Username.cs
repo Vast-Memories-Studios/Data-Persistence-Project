@@ -29,5 +29,9 @@ public class Username : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
- 
+    public void CreateUsername(string User)
+    {
+        InputUsername = User;
+        
+    }
 }

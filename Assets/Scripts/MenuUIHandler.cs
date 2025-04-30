@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // Sets the script to be executed later than all default scripts
 // This is helpful for UI, since other things may need to be initialized before setting the UI
@@ -12,7 +13,9 @@ using UnityEngine.SceneManagement;
 public class MenuUIHandler : MonoBehaviour
 {
     public string username;
-
+    public TMP_InputField inputuser;
+    
+  
 
     private void Start()
     {
@@ -36,9 +39,10 @@ public class MenuUIHandler : MonoBehaviour
 #endif
 
     }
-    public void ReadStringInput(string user)
+    public void ReadStringInput()
     {
-        Username.Instance.InputUsername = user;
+        username = inputuser.text;
         Debug.Log(username);
+        Username.Instance.CreateUsername(username);
     }
 }
