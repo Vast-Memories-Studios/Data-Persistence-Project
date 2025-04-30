@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -25,7 +26,13 @@ public class MainUIHandler : MonoBehaviour
     }
     private void Awake()
     {
-        Username.Instance.InputUsername = nameText.text;
+        
+        nameText.text = "Name: " + Username.Instance.InputUsername;
+    }
+    public void GetHighscore()
+    {
+
+        Username.Instance.highscoreCheck = bestScoreText.text;
     }
 
 }
