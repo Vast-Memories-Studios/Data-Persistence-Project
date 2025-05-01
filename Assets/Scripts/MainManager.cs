@@ -13,7 +13,7 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverText;
-    public MainUIHandler MUIH;
+    public MainUIHandler MainUIHandler;
     
 
 
@@ -65,6 +65,7 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        MainUIHandler.GetHighscore();
     }
 
     void AddPoint(int point)
@@ -77,7 +78,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
-        MUIH.GetHighscore();
+        
 
 
     }

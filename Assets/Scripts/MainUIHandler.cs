@@ -13,14 +13,18 @@ public class MainUIHandler : MonoBehaviour
     public Text scoreText;
     public Text nameText;
     public Text bestScoreText;
-    public int bestScore;
+    private int bestScore;
 
     // Start is called before the first frame update
     void Start()
     {
         if(PlayerPrefs.HasKey("score"))
         {
-            bestScoreText.text = PlayerPrefs.GetString("score");
+            bestScoreText.text = "Best Score: "+PlayerPrefs.GetString("score");
+        }
+        else
+        {
+            bestScoreText.text = "Best Score: " + 0;
         }
     }
 
@@ -36,11 +40,19 @@ public class MainUIHandler : MonoBehaviour
     }
     public void GetHighscore()
     {
-        if(int.Parse(scoreText.text) > int.Parse(bestScoreText.text))
+        if (PlayerPrefs.HasKey("score"))
+        {
+
+
+            if (int.Parse(scoreText.text) > int.Parse(bestScoreText.text))
+            {
+                PlayerPrefs.SetString("score", scoreText.text);
+            }
+        }
+        else
         {
             PlayerPrefs.SetString("score", scoreText.text);
         }
-        
     }
 
 }
