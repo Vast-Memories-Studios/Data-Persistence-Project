@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,7 +20,7 @@ public class MainManager : MonoBehaviour
 
 
     private bool m_Started = false;
-    private int m_Points;
+    public int m_Points;
     
     private bool m_GameOver = false;
 
@@ -65,22 +66,20 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        MainUIHandler.GetHighscore();
+
     }
 
     void AddPoint(int point)
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        MainUIHandler.GetHighscore(m_Points);
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
-        
-
-
     }
 
 

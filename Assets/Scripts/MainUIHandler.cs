@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class MainUIHandler : MonoBehaviour
 {
-    public Text scoreText;
+    //public Text scoreText;
     public Text nameText;
     public Text bestScoreText;
     private int bestScore;
@@ -20,11 +20,13 @@ public class MainUIHandler : MonoBehaviour
     {
         if(PlayerPrefs.HasKey("score"))
         {
-            bestScoreText.text = "Best Score: "+PlayerPrefs.GetString("score");
+            bestScore = PlayerPrefs.GetInt("score");
+            bestScoreText.text = "Best Score: "+bestScore;
         }
         else
         {
-            bestScoreText.text = "Best Score: " + 0;
+            bestScore = 0;
+            bestScoreText.text = "Best Score: " + bestScore;
         }
     }
 
@@ -38,20 +40,25 @@ public class MainUIHandler : MonoBehaviour
         
         nameText.text = "Name: " + Username.Instance.InputUsername;
     }
-    public void GetHighscore()
+    public void GetHighscore(int scoreTotal)
     {
         if (PlayerPrefs.HasKey("score"))
         {
 
 
-            if (int.Parse(scoreText.text) > int.Parse(bestScoreText.text))
+            if (scoreTotal > bestScore)
             {
-                PlayerPrefs.SetString("score", scoreText.text);
+                bestScore = scoreTotal;
+                PlayerPrefs.SetInt("score", bestScore);
+                
+                bestScoreText.text = "Best Score: " + bestScore;
             }
         }
         else
         {
-            PlayerPrefs.SetString("score", scoreText.text);
+            bestScore = scoreTotal;
+            PlayerPrefs.SetInt("score", bestScore);
+            bestScoreText.text = "Best Score: " + bestScore;
         }
     }
 
