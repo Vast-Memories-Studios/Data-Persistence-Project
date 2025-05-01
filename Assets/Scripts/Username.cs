@@ -37,34 +37,5 @@ public class Username : MonoBehaviour
         InputUsername = User;
         
     }
-    [System.Serializable]
-    class SaveData
-    {
-        public string Highscore;
-    }
-    public void SaveHighScore()
-    {
-        SaveData data = new SaveData();
 
-        data.Highscore = Highscore;
-
-        string json = JsonUtility.ToJson(data);
-
-        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-    }
-    public void LoadHighscore()
-    {
-        string path = Application.persistentDataPath + "/savefile.json";
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            SaveData data = JsonUtility.FromJson<SaveData>(json);
-
-            Highscore = data.Highscore;
-        }
-    }
-    public void HighscoreCheck()
-    {
-
-    }
 }

@@ -13,6 +13,7 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverText;
+    public MainUIHandler MUIH;
     
 
 
@@ -76,7 +77,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
-        
+        MUIH.GetHighscore();
 
 
     }
